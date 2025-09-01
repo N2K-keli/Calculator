@@ -1,0 +1,90 @@
+body
+{
+    
+    margin: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border: 1px solid orange;
+
+    
+    
+}
+
+#Basic-Calculator
+{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    height: 650px;
+    width: 400px;
+    border-radius: 11px;
+    
+    
+
+}
+#Basic-Calculator-Screen
+{
+    border: 1px solid black;
+    height: 30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+#Basic-Calculator-Input
+{
+    border: 1px solid black;
+    height: 65%;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+.Number-Button
+{
+    height: 100%;
+    width: 25%;
+
+}
+.Button-Row
+{
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+}
+.Scientific
+{
+
+
+}
+#Button-Row-Scientific
+{
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+}
+.Scientific-Button
+{
+    height: 100%;
+    width: 100%;
+
+}
+#Basic-Calculator-Screen-history
+{
+    border-bottom: 1px dashed black ;
+    height: 50%;
+}
+#Basic-Calculator-Screen-Answer
+{
+    height: 50%;
+    text-align: right;
+    
+}
