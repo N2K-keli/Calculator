@@ -2,6 +2,7 @@ let numberButton = document.getElementsByClassName("Number-Button")
 let screenOutput =  document.getElementById("Basic-Calculator-Screen-Answer")
 let clearButton =  document.getElementById("Clear")
 let backspaceButton = document.getElementById("Backspace");
+let previousAnswerButton =  document.getElementById("Basic-Calculator-Screen-history")
 
 
 for(let i = 0; i<numberButton.length ; i++) 
@@ -27,9 +28,13 @@ for(let i = 0; i<numberButton.length ; i++)
                     {
                         let expression = screenOutput.textContent
                         try {
+                            expression = expression.replaceAll("%","/100")
+                            expression =  expression.replaceAll("sqrt(", "Math.sqrt(")
+                            expression = expression.replaceAll("mod", "%")
                             let answer = eval(expression)
                             ans = String(answer)
                             screenOutput.textContent = ans;
+                            previousAnswerButton.textContent = ans
                             console.log(" the answer is : "+  ans + " and the type of the variable is : " + typeof(ans))
                         }
                         catch(error)
@@ -44,20 +49,10 @@ for(let i = 0; i<numberButton.length ; i++)
                         // know what is good or bad.
                         
                     } 
-                else if(ButtonValue === '%')
-                {
-                    let percentageValue = eval(screenOutput.textContent)
-                    try
+                else if(ButtonValue === "ans") 
                     {
-                        percentageValue = (Number(percentageValue))
-                        let ans = percentageValue / 100
-                        screenOutput.textContent =  ans
+                        screenOutput.textContent = screenOutput.textContent + previousAnswerButton.textContent
                     }
-                    catch(error)
-                    {
-                        console.log("an error occuerd" + error.message)
-                    }
-                }
                 else
                     {
                         screenOutput.textContent = screenOutput.textContent + ButtonValue 

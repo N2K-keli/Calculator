@@ -83,6 +83,7 @@ body
 {
     border-bottom: 1px dashed black ;
     height: 50%;
+    text-align: right;
 }
 #Basic-Calculator-Screen-Answer
 {
