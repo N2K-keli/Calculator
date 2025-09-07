@@ -11,8 +11,17 @@ body
     
     
 }
-
-#Basic-Calculator
+.hidden-Elements
+{
+    opacity: 0;
+    pointer-events: none; 
+}
+.calculator-view{
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
+}
+#Basic-Calculator, #Scientifci-Calculator
 {
     display: flex;
     flex-direction: column;
@@ -20,6 +29,7 @@ body
     height: 650px;
     width: 400px;
     border-radius: 11px;
+    background-color: #FFF9C4;
     
     
 
@@ -36,6 +46,7 @@ body
     display: flex;
     flex-direction: column;
     text-align: center;
+    background-color: #FF5722;
     
 }
 #Basic-Calculator-Input
@@ -48,13 +59,20 @@ body
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    
+    
 
 }
 .Number-Button
 {
     height: 100%;
     width: 25%;
+    background-color: #81D4FA;
 
+}
+.Number-Button:hover
+{
+    translate: 0px -2px;
 }
 .Button-Row
 {
@@ -62,18 +80,14 @@ body
     display: flex;
     flex-direction: row;
 }
-.Scientific
-{
 
-
-}
 #Button-Row-Scientific
 {
     height: 25%;
     display: flex;
     flex-direction: row;
 }
-.Scientific-Button
+#Scientific-Button
 {
     height: 100%;
     width: 100%;

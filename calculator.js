@@ -3,6 +3,9 @@ let screenOutput =  document.getElementById("Basic-Calculator-Screen-Answer")
 let clearButton =  document.getElementById("Clear")
 let backspaceButton = document.getElementById("Backspace");
 let previousAnswerButton =  document.getElementById("Basic-Calculator-Screen-history")
+let scientificDisplay = document.getElementById("Scientifci-Calculator")
+let scientificButton = document.getElementById("Scientific-Button")
+let basicCalculatorDisplay  =  document.getElementById("Basic-Calculator")
 
 
 for(let i = 0; i<numberButton.length ; i++) 
@@ -59,6 +62,13 @@ for(let i = 0; i<numberButton.length ; i++)
                     }
             });
     }
+
+
+scientificButton.addEventListener('click', function(){
+    
+    basicCalculatorDisplay.classList.add("hidden-Elements")
+    scientificDisplay.classList.remove("hidden-Elements")
+})
 
 
 
