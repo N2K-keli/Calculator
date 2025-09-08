@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="Basic-Calculator">
-        <div id="Basic-Calculator-Screen">
-            <div id="Basic-Calculator-Screen-history"></div>
-            <div id="Basic-Calculator-Screen-Answer"></div>
+        <div class="Basic-Calculator-Screen">
+            <div class="Basic-Calculator-Screen-history"></div>
+            <div class="Basic-Calculator-Screen-Answer"></div>
         </div>
         <div id="Basic-Calculator-Input" >
             <div style="border: 1px solid black; width: 100%;" class="Button-Row">
@@ -18,6 +18,7 @@
                 <input type="button" class="Number-Button" value='('> 
                 <input type="button" class="Number-Button" value="%">
                 <input type="button" class="Number-Button" value="/">
+
             </div>
             <div style="border: 1px solid black; width: 100%;" class="Button-Row">
                 <input type="button" class="Number-Button"  value="ans">
@@ -56,24 +57,40 @@
 
     </div>
     <div id="Scientifci-Calculator" class="hidden-Elements">
-        <p>this is a scientific calculator</p>
-         <div id="Basic-Calculator">
-        <div id="Basic-Calculator-Screen">
-            <div id="Basic-Calculator-Screen-history"></div>
-            <div id="Basic-Calculator-Screen-Answer"></div>
+        <div class="Basic-Calculator-Screen">
+            <div class="Basic-Calculator-Screen-history"></div>
+            <div class="Basic-Calculator-Screen-Answer"></div>
         </div>
         <div id="Basic-Calculator-Input" >
             <div style="border: 1px solid black; width: 100%;" class="Button-Row">
                 <input type="button" class="Number-Button" id="Clear" value="CE">
                 <input type="button" class="Number-Button" value='('> 
-                <input type="button" class="Number-Button" value="%">
+                <input type="button" class="Number-Button" value=")">
                 <input type="button" class="Number-Button" value="/">
+                <input type="button" class="Number-Button" value="sinh(">
+                <input type="button" class="Number-Button" value="cosh(">
+                <input type="button" class="Number-Button" value="tanh(">
             </div>
             <div style="border: 1px solid black; width: 100%;" class="Button-Row">
                 <input type="button" class="Number-Button"  value="ans">
-                <input type="button" class="Number-Button" value=')'> 
+                <input type="button" class="Number-Button" value='%'> 
                 <input type="button" class="Number-Button" value="mod">
                 <input type="button" class="Number-Button" value="sqrt(">
+                <input type="button" class="Number-Button" value="sin(">
+                <input type="button" class="Number-Button" value="cos(">
+                <input type="button" class="Number-Button" value="tan(">
+                <input type="button" class="Number-Button" value="Log(">
+            </div>
+            <div style="border: 1px solid black; width: 100%;" class="Button-Row"></style=> 
+                <input type="button" class="Number-Button" value="sqr(">
+                <input type="button" class="Number-Button" value="arcsin(">
+                <input type="button" class="Number-Button" value="arccos(">
+                <input type="button" class="Number-Button" value="arctan(">
+                <input type="button" class="Number-Button" value="Ln(">
+                <input type="button" class="Number-Button" value="π">
+                <input type="button" class="Number-Button" value="e">
+                <input type="button" class="Number-Button" value="inv(">
+                
             </div>
             <div style="border: 1px solid black; width: 100%; "  class="Button-Row">
                 <input type="button" class="Number-Button" value="*">
@@ -99,7 +116,12 @@
                 <input type="button" class="Number-Button" id="Backspace" value='⌫'>
                 <input type="button" class="Number-Button" value="=">
             </div>
+        </div>
+        <div style="border: 1px solid black; width: 100%;"  id="Button-Row-Scientific" >
+            <button id="Basic-Button">Basic CALCULATOR</button>
+            </div>
     </div>
+    
 </body>
 <script src="calculator.js"></script>
 </html>

@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 body
 {
     
-    margin: 12px;
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    border: 1px solid orange;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     
     
@@ -15,59 +18,79 @@ body
 {
     opacity: 0;
     pointer-events: none; 
+    transform: scale(0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .calculator-view{
     opacity: 1;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     pointer-events: auto;
+    transform: scale(1);
 }
 #Basic-Calculator, #Scientifci-Calculator
 {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    height: 650px;
-    width: 400px;
-    border-radius: 11px;
-    background-color: #FFF9C4;
-    
+    width: 380px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 8px 25px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     
 
 }
-#Basic-Calculator-Screen
+#Scientifci-Calculator {
+    width: 520px;
+}
+.Basic-Calculator-Screen
 {
-    border: 1px solid black;
-    height: 30%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 5px;
+    background: linear-gradient(145deg, #2d3748, #1a202c);
+    height: 120px;
+    margin-bottom: 24px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
-    text-align: center;
-    background-color: #FF5722;
+    padding: 16px 20px;
+    box-shadow: 
+        inset 0 2px 10px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     
 }
 #Basic-Calculator-Input
 {
-    border: 1px solid black;
-    height: 65%;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
     display: flex;
     flex-direction: column;
+    gap: 12px;
     
     
 
 }
 .Number-Button
 {
-    height: 100%;
-    width: 25%;
-    background-color: #81D4FA;
+    height: 60px;
+    width: 100%;
+    background: linear-gradient(145deg, #ffffff, #f7fafc);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #2d3748;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
 
 }
 .Number-Button:hover
@@ -79,6 +102,7 @@ body
     height: 15%;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 #Button-Row-Scientific
@@ -86,22 +110,167 @@ body
     height: 25%;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
-#Scientific-Button
+#Scientific-Button, #Basic-Button
 {
     height: 100%;
     width: 100%;
 
 }
-#Basic-Calculator-Screen-history
+.Basic-Calculator-Screen-history
 {
-    border-bottom: 1px dashed black ;
-    height: 50%;
-    text-align: right;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 14px;
+    color: #a0aec0;
+    font-weight: 400;
+    border-bottom: 1px solid rgba(160, 174, 192, 0.2);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    min-height: 20px;
 }
-#Basic-Calculator-Screen-Answer
+.Basic-Calculator-Screen-Answer
 {
-    height: 50%;
-    text-align: right;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     
+}
+#Scientific-Button , #Basic-Button {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(145deg, #1d1f29, #050405);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 2px 8px rgba(102, 126, 234, 0.3),
+        0 1px 3px rgba(8, 68, 187, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+    
+    #Basic-Calculator, #Scientifci-Calculator {
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+        border-radius: 20px;
+    }
+    
+    #Scientifci-Calculator {
+        width: 100%;
+    }
+    
+    .Basic-Calculator-Screen {
+        height: 100px;
+        margin-bottom: 16px;
+        padding: 12px 16px;
+    }
+    
+    .Basic-Calculator-Screen-Answer {
+        font-size: 24px;
+    }
+    
+    .Basic-Calculator-Screen-history {
+        font-size: 12px;
+    }
+    
+    .Number-Button {
+        height: 50px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+    
+    #Basic-Calculator-Input {
+        gap: 8px;
+    }
+    
+    .Button-Row {
+        gap: 8px;
+    }
+    
+    #Scientific-Button, #Basic-Button {
+        height: 44px;
+        font-size: 12px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    #Basic-Calculator, #Scientifci-Calculator {
+        padding: 12px;
+    }
+    
+    .Number-Button {
+        height: 44px;
+        font-size: 14px;
+    }
+    
+    #Basic-Calculator-Screen {
+        height: 80px;
+    }
+    
+    .Basic-Calculator-Screen-Answer {
+        font-size: 20px;
+    }
+    
+    .Button-Row {
+        gap: 6px;
+    }
+    
+    #Basic-Calculator-Input {
+        gap: 6px;
+    }
+}
+
+/* Landscape orientation */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+        align-items: center;
+    }
+    
+    #Basic-Calculator, #Scientifci-Calculator {
+        padding: 12px;
+    }
+    
+    .Basic-Calculator-Screen {
+        height: 70px;
+        margin-bottom: 12px;
+    }
+    
+    .Number-Button {
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    #Basic-Calculator-Input {
+        gap: 6px;
+    }
+    
+    #Scientific-Button, #Basic-Button {
+        height: 36px;
+    }
 }
