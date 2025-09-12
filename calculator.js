@@ -8,9 +8,9 @@ let scientificButton = document.getElementById("Scientific-Button")
 let basicCalculatorDisplay  =  document.getElementById("Basic-Calculator")
 let basicCalculatorButton =  document.getElementById("Basic-Button")
 
-window.toRadians=function(degree) // to make it global for eval() since eval() can only bread in local scope
+window.sineFunction=function(degree) // to make it global for eval() since eval() can only bread in local scope
 {
-    return degree * (Math.PI / 180) 
+    return  Math.sin( degree * (Math.PI / 180) ) 
     // need to convert from degrees to radians because js reads but radians in its math methods which i think is bullshit.
     // like who the f***k sees things in radians. OR am i the dumb one ?
 }
@@ -18,6 +18,28 @@ window.inverse =  function (number)
 {
     return (1 / number)
 }
+window.cosFunction = function (degree) 
+{
+    return  Math.cos( degree * (Math.PI / 180) ) 
+
+}
+window.tanFunction = function (degree) 
+{
+    return  Math.tan( degree * (Math.PI / 180) ) 
+}
+window.inverseSine = function(number) 
+{
+    return  ( Math.asin (number) * (180 / Math.PI ) )
+}
+window.inverseCos = function(number) 
+{
+    return  ( Math.acos (number) * (180 / Math.PI ) )
+}
+window.inverseTan = function(number) 
+{
+    return  ( Math.atan (number) * (180 / Math.PI ) )
+}
+
 for(let i = 0; i<numberButton.length ; i++) 
     {
         numberButton[i].addEventListener('click',function()
@@ -57,88 +79,59 @@ for(let i = 0; i<numberButton.length ; i++)
                                 expression =  expression.replaceAll("π", "Math.PI")
                                 expression = expression.replaceAll("Ln(", "Math.log(")
                                 expression = expression.replaceAll("inv(", "inverse(")
-                                // why the conditional below you ask. because for some reason if i say sin(90) in the calculator, 
-                                // the function is supposed to return Math.sin(toRadians(90)) but instead it returns Math.sin(toRadians(90))90)
-                                // so  i just put it in an if to isolate the sine and then slice the remaining 3 characters. i must do for all trigs
-                                // not the best way but that is what i have seen not the smartest i guess. 
-                                if(expression.includes("sin(")) 
-                                {
-                                    expression = expression.replaceAll(/sin\(/g, function(match, position, stringWord)
-                                    {
-                                        console.log("DEBUG - match:", match, "position:", position, "stringWord:", stringWord);
-    
-                                        let openCount = 1;
-                                        let i = position + match.length;
-                                        let startContentPosition = i;
-    
-                                    console.log("DEBUG - Starting loop: i =", i, "openCount =", openCount, "stringWord.length =", stringWord.length);
-                                
-                                    while(i < stringWord.length && openCount > 0) 
-                                    {
-                                        console.log("DEBUG - Loop iteration: i =", i, "char =", stringWord[i], "openCount =", openCount);
-                                    
-                                        if(stringWord[i] === '(') 
-                                        {
-                                            openCount++;
-                                            console.log("DEBUG - Found '(', openCount now:", openCount);
-                                        }
-                                        else if (stringWord[i] === ')')
-                                        {
-                                            openCount--;
-                                            console.log("DEBUG - Found ')', openCount now:", openCount);
-                                        }
-                                        i++;
-                                    }
-                                    
-                                        console.log("DEBUG - After loop: i =", i, "openCount =", openCount);
-                                    
-                                        let endContentPosition = i - 1;
-                                        let content = stringWord.substring(startContentPosition, endContentPosition);
-                                    
-                                        console.log("DEBUG - content found:", content);
-                                        console.log("DEBUG - substring from", startContentPosition, "to", endContentPosition);
+                                expression  = expression.replaceAll("cosh(", "Math.cosh(")
+                                expression = expression.replaceAll("^", "**")
+                                expression  = expression.replaceAll("tanh(", "Math.tanh(")
 
-                                        return `Math.sin(toRadians(${content}))`;
-                                    })
-                                    expression = expression.slice(0,-3)
-                                }
+                                if(expression.includes("sin")) 
+                                    {
+                                        let startingIndex  = expression.indexOf("sin")
+                                        if(expression[startingIndex + 3 ]  == "h")
+                                            {
+                                            expression  = expression.replaceAll("sinh(", "Math.sinh(")
+                                            }
+                                        else if(expression[startingIndex  -1 ]  == "c")
+                                                {
+                                                expression  = expression.replaceAll("arcsin(", "inverseSine(")
+                                                }
+                                        else
+                                            {
+                                            expression  = expression.replaceAll("sin(", "sineFunction(")
+                                            }
+                                    }
+                                if(expression.includes("cos")) 
+                                    {
+                                        let startingIndex  = expression.indexOf("cos")
+                                        if(expression[startingIndex + 3 ]  == "h")
+                                            {
+                                            expression  = expression.replaceAll("cosh(", "Math.cosh(")
+                                            }
+                                        else if(expression[startingIndex  -1 ]  == "c")
+                                                {
+                                                expression  = expression.replaceAll("arccos(", "inverseCos(")
+                                                }
+                                        else
+                                            {
+                                            expression  = expression.replaceAll("cos(", "cosFunction(")
+                                            }
+                                    }
+                                if(expression.includes("tan")) 
+                                    {
+                                        let startingIndex  = expression.indexOf("tan")
+                                        if(expression[startingIndex + 3 ]  == "h")
+                                            {
+                                            expression  = expression.replaceAll("tanh(", "Math.tanh(")
+                                            }
+                                        else if(expression[startingIndex  -1 ]  == "c")
+                                                {
+                                                expression  = expression.replaceAll("arctan(", "inverseTan(")
+                                                }
+                                        else
+                                            {
+                                            expression  = expression.replaceAll("tan(", "tanFunction(")
+                                            }
+                                    }
                                 
-                                if(expression.includes("cos("))
-                                {
-                                    expression = expression.replaceAll(/cos\(/g, function(match, position, stringWord){
-                                        let openCount = 1;
-                                        let i = position + match.length
-                                        let startContentPosition = i
-                                        while(i < stringWord.length && openCount > 0) 
-                                        {
-                                            if(stringWord[i] === '(') openCount++
-                                            else if (stringWord[i] === ')') openCount--
-                                            i++
-                                        }
-                                        let endContentPosition = i-1
-                                        let content = stringWord.substring(startContentPosition, endContentPosition)
-                                        return `Math.cos(toRadians(${content}))`
-                                    })
-                                    expression = expression.slice(0,-3)
-                            }
-                                if(expression.includes("tan("))
-                                {
-                                    expression = expression.replaceAll(/tan\(/g, function(match, position, stringWord){
-                                        let openCount = 1;
-                                        let i = position + match.length
-                                        let startContentPosition = i
-                                        while(i < stringWord.length && openCount > 0) 
-                                        {
-                                            if(stringWord[i] === '(') openCount++
-                                            else if (stringWord[i] === ')') openCount--
-                                            i++
-                                        }
-                                        let endContentPosition = i-1
-                                        let content = stringWord.substring(startContentPosition, endContentPosition)
-                                        return `Math.tan(toRadians(${content}))`
-                                })
-                                expression = expression.slice(0,-3)
-                                }
                             }
                             console.log("Final expression before eval:", expression)
                             // Only evaluate and display on the active calculator
@@ -156,12 +149,12 @@ for(let i = 0; i<numberButton.length ; i++)
                     } 
                 else if(ButtonValue === "ans") 
                     {
-                        // CORRECTED: Only add previous answer to the active calculator
+                        //  Only add previous answer to the active calculator
                         screenOutput[activeIndex].textContent = screenOutput[activeIndex].textContent + previousAnswerButton[activeIndex].textContent
                     }
                 else
                     {
-                        // CORRECTED: Only add button input to the active calculator
+                        //Only add button input to the active calculator
                         screenOutput[activeIndex].textContent = screenOutput[activeIndex].textContent + ButtonValue
                     }
             });
@@ -176,3 +169,4 @@ basicCalculatorButton.addEventListener('click', function()
     basicCalculatorDisplay.classList.remove("hidden-Elements")
     scientificDisplay.classList.add("hidden-Elements")
 })
+// after finishing this project i can say fuck Js, C++ is the best
