@@ -74,16 +74,29 @@ for(let i = 0; i<numberButton.length ; i++)
                             expression = expression.replaceAll("mod", "%")
                             // below conditional only for when the active calculator is active
                             if(isScientificActive) {
-                                expression =  expression.replaceAll("Log(", "Math.log10(")
-                                expression =  expression.replaceAll("e","Math.E")
-                                expression =  expression.replaceAll("π", "Math.PI")
+                                expression = expression.replaceAll("Log(", "Math.log10(")
                                 expression = expression.replaceAll("Ln(", "Math.log(")
                                 expression = expression.replaceAll("inv(", "inverse(")
-                                expression  = expression.replaceAll("cosh(", "Math.cosh(")
+                                expression = expression.replaceAll("e", "Math.E")
+                                expression = expression.replaceAll("π", "Math.PI")
                                 expression = expression.replaceAll("^", "**")
-                                expression  = expression.replaceAll("tanh(", "Math.tanh(")
-
-                                if(expression.includes("sin")) 
+                                
+                                expression = expression.replaceAll("arcsin(", "inverseSine(")
+                                expression = expression.replaceAll("arccos(", "inverseCos(")
+                                expression = expression.replaceAll("arctan(", "inverseTan(")
+                                
+                                expression = expression.replaceAll("sinh(", "Math.sinh(")
+                                expression = expression.replaceAll("cosh(", "Math.cosh(")
+                                expression = expression.replaceAll("tanh(", "Math.tanh(")
+                                
+                                expression = expression.replaceAll("sin(", "sineFunction(")
+                                expression = expression.replaceAll("cos(", "cosFunction(")
+                                expression = expression.replaceAll("tan(", "tanFunction(")
+                                // ok . the issue i had with using replaceAll method was that it would replace only the first instances of the trigonometry
+                                // also say of i say sinh(80)  or arcsin(80), the sin in the sinh(80) will be replaced.  the commented code below is how i thought 
+                                // of reseolving it.  but from youtube videos, it seems arranging the trigonometric functions in a particular order solves the issue
+                                // and the order is in term of length as there are what they call string priorities in js replacing methods. longer ones take priority
+                            /*    if(expression.includes("sin")) 
                                     {
                                         let startingIndex  = expression.indexOf("sin")
                                         if(expression[startingIndex + 3 ]  == "h")
@@ -130,9 +143,9 @@ for(let i = 0; i<numberButton.length ; i++)
                                             {
                                             expression  = expression.replaceAll("tan(", "tanFunction(")
                                             }
-                                    }
+                                    } */
                                 
-                            }
+                            } 
                             console.log("Final expression before eval:", expression)
                             // Only evaluate and display on the active calculator
                             let answer = eval(expression)
