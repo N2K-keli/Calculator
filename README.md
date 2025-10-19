@@ -14,7 +14,7 @@ You can view the live version here (optional):
 
   
 Main interface of the calculator:  
-![Calculator Main Screen](images/screenshot1.png)
+![Calculator Main Screen](images/ScreenShot1.png)
 
 Scientific interface of the calculator:  
-![Calculator Main Screen](images/screenshot2.png)
+![Calculator Main Screen](images/Screenshot2.png)
